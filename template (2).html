@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keshav Varshney - Founder's Office Application</title>
+    <style>
+        :root {
+            /* BrowserStack Brand Colors */
+            --bs-blue: #1DB584;
+            --bs-dark-blue: #0A5C3A;
+            --bs-light-blue: #E8F8F3;
+            --bs-orange: #FF6B35;
+            --bs-dark-gray: #2C3E50;
+            --bs-light-gray: #ECF0F1;
+            --primary: var(--bs-blue);
+            --primary-dark: var(--bs-dark-blue);
+            --primary-light: var(--bs-light-blue);
+            --accent: var(--bs-orange);
+            --text-dark: var(--bs-dark-gray);
+            --text-light: #ffffff;
+            --background: #ffffff;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, var(--primary-light) 0%, #ffffff 50%, var(--primary-light) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide {
+            width: 90vw;
+            max-width: 1000px;
+            height: 80vh;
+            max-height: 600px;
+            background: var(--background);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slide-content {
+            width: 100%;
+            z-index: 2;
+        }
+
+        /* Slide 1 - Hook */
+        .slide-1 {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--text-light);
+        }
+
+        .slide-1 h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 30px;
+            line-height: 1.1;
+        }
+
+        .slide-1 .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        /* Slide 2 - About */
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .name {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .power-line {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .location {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            opacity: 0.8;
+        }
+
+        /* Slide 3-7 - Content Slides */
+        .content-slide h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        .bullet-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .bullet-item {
+            background: var(--primary-light);
+            margin: 20px 0;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary);
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+
+        .bullet-item:hover {
+            transform: translateX(10px);
+        }
+
+        .emoji {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+
+        /* Slide 4 - Experience */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            width: 100%;
+        }
+
+        .experience-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid var(--primary-light);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        } 
+.experience-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+
+
+
+
+        /* Slide 5 - Skills */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, var(--primary-light), white);
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid var(--primary);
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        /* Slide 6 - Problem Solving */
+        .case-study {
+            background: var(--accent);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            font-size: 1.3rem;
+            font-weight: 500;
+        }
+
+        /* Slide 7 - Communication */
+        .quote-section {
+            background: var(--primary-light);
+            padding: 40px;
+            border-radius: 20px;
+            border-left: 8px solid var(--primary);
+            margin: 30px 0;
+        }
+
+        .quote {
+            font-size: 1.8rem;
+            font-style: italic;
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        /* Slide 8 - CTA */
+        .slide-8 {
+            background: linear-gradient(135deg, var(--accent) 0%, #e74c3c 100%);
+            color: var(--text-light);
+        }
+
+        .cta-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .cta-subtitle {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .contact-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-3px);
+        }
+
+        /* Navigation */
+        .nav-container {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .nav-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .slide-counter {
+            background: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            color: var(--text-dark);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+            z-index: 1000;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .slide {
+                width: 95vw;
+                height: 90vh;
+                padding: 30px 20px;
+            }
+
+            .name {
+                font-size: 2.5rem;
+            }
+
+            .content-slide h2 {
+                font-size: 2rem;
+            }
+
+            .bullet-item {
+                font-size: 1.1rem;
+                padding: 20px;
+            }
+
+            .experience-grid,
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-container {
+                bottom: 20px;
+            }
+
+            .nav-btn {
+                padding: 12px 16px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Background Decorations */
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(29,181,132,0.1) 0%, transparent 70%);
+            z-index: 1;
+        }
+
+        .slide::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,107,53,0.1) 0%, transparent 70%);
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <div class="presentation-container">
+        <!-- Slide 1: Hook -->
+        <div class="slide slide-1 active" data-slide="1">
+            <div class="slide-content">
+                <h1>Your Next Multi-Tasking Growth Hacker Is Here 🚀</h1>
+                <p class="subtitle">Why Hire a person without taste or geekness when you can have both?</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: About -->
+        <div class="slide content-slide" data-slide="2">
+            <div class="slide-content">
+                <div class="profile-section">
+                    <img src="https://raw.githubusercontent.com/keshavvarsh09/marketing-resume/refs/heads/main/Gemini_Generated_Image_ab2qg8ab2qg8ab2q%20(1).png" class="avatar">
+                    <h1 class="name">Keshav Varshney</h1>
+                    <p class="tagline">Strategic Marketing Maverick. Empathetic Problem Solver. Founder's Wingman.</p>
+                    <p class="power-line">"I thrive where most people say 'Are you sure that this would work'"</p>
+                    <p class="location">📍 Delhi-rooted and gets the best out even on a shoestring budget. Ready for high-speed impact, everywhere.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Why Built for Creative Office -->
+        <div class="slide content-slide" data-slide="3">
+            <div class="slide-content">
+                <h2>Why I'm Built for the Creative Office</h2>
+                <ul class="bullet-list">
+                    <li class="bullet-item">
+                        <span class="emoji">📊</span>
+                        Data excites me. Chaos inspires me. Change? I call it breakfast.
+                    </li>
+                    <li class="bullet-item">
+                        <span class="emoji">🎯</span>
+                       I don't wait for perfect. I move and adjust in real-time. I'm geek of psychology.
+                    </li>
+                    <li class="bullet-item">
+                        <span class="emoji">🔗</span>
+                       I own the entire brand lifecycle, not just my lane. I connect dots others don't see AND get teams excited to execute. 
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 4: Key Experience -->
+        <div class="slide content-slide" data-slide="4">
+            <div class="slide-content">
+                <h2>Key Experience (Story Format)</h2>
+                <div class="experience-grid">
+                    <div class="experience-card">
+                        <span class="emoji">📈</span>
+                        <strong>Scaled Navdhaaga, Onlysick, Zensage and Techgeekz's brand engagement 10X</strong> with creative, real-time campaign tweaks. These were all my own projects made from a laptop and internet with 3k in my wallet.
+                    </div>
+                    <div class="experience-card">
+                         <span class="emoji">🚀</span>
+                        <strong>Worked for Badass Media in execution of Zepto's Great Indian Fake Shaadi </strong> and helped in technical, content and management tasks for span of month.                    </div>
+                    <div class="experience-card">
+                        <span class="emoji">🚀</span>
+                        <strong>Transformed founder's random posts </strong> into viral LinkedIn content, made thumbnails leading to 10,000$ in revenue in 1 month.
+                    </div>
+  <div class="experience-card">
+                        <span class="emoji">⚡</span>
+                        <strong>Vibe coded automation scripts</strong> that turned complex workflows into one-click solutions (I'm selectively lazy)
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Marketing + Ops Skills -->
+        <div class="slide content-slide" data-slide="5">
+            <div class="slide-content">
+                <h2>Marketing + Ops Superpowers ⚡</h2>
+                <div class="skills-container">
+                    <div class="skill-card">
+                        <span class="emoji">🧙‍♂️</span>
+                        <strong>Analytical wizardry</strong><br>
+                        (Python, dashboards, rapid trend spotting)
+                    </div>
+                    <div class="skill-card">
+                        <span class="emoji">📖</span>
+                        <strong>Storytelling for board/senior presentations</strong><br>
+                        (for non-technical audiences)
+                    </div>
+                    <div class="skill-card">
+                        <span class="emoji">🤝</span>
+                        <strong>Relationship whisperer</strong><br>
+                        (can match energy with anyone, from interns to CXOs)
+                    </div>
+                    <div class="skill-card">
+                        <span class="emoji">📚</span>
+                        <strong>"I make even the driest reports fun to read"</strong><br>
+                         because what gets read, gets acted on!
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Problem Solving -->
+        <div class="slide content-slide" data-slide="6">
+            <div class="slide-content">
+                <h2>Founder is a Jack of all trades</h2>
+                <div class="case-study">
+                    <span class="emoji">⚡</span>
+                    <strong>Case Study:</strong> I have tried and failed a lot of times in past 4 years, my adhd never lets me give up on anything. 
+                </div>
+                <ul class="bullet-list">
+                    <li class="bullet-item">
+                        <span class="emoji">🎯</span>
+                        Managed chaotic product launches with calm precision
+                    </li>
+                    <li class="bullet-item">
+                        <span class="emoji">⏰</span>
+                        Made sure stakeholders always got decision-critical info at the right moment
+                    </li>
+                    <li class="bullet-item">
+                        <span class="emoji">🔧</span>
+                        Turned technical problems into clear action items for non-technical teams
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 7: Communication & Fun Factor -->
+        <div class="slide content-slide" data-slide="7">
+            <div class="slide-content">
+                <h2>Communication &amp; Fun Factor</h2>
+                <div class="quote-section">
+                    <p class="quote">"If you can't explain it in a meme, you haven't understood it well enough. 🦄"</p>
+                </div>
+                <ul class="bullet-list">
+                    <li class="bullet-item">
+                        <span class="emoji">📧</span>
+                        Created engaging newsletters that people actually read
+                    </li>
+                    <li class="bullet-item">
+                        <span class="emoji">🎤</span>
+                        Scripted presentations that made complex data digestible
+                    </li>
+                    <li class="bullet-item">
+                        <span class="emoji">💡</span>
+                        Built content that went from 'boring update' to 'must-share insights'
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 8: CTA -->
+        <div class="slide slide-8" data-slide="8">
+            <div class="slide-content">
+                <h1 class="cta-title">Ready to fill the missing piece to your startup's next growth leap?</h1>
+                <p class="cta-subtitle">Let's talk. Reply, DM, call, emoji, carrier pigeon—I respond fast. 📧</p>
+                <div class="contact-links">
+                    <a href="mailto:keshavvarsh09@gmail.com" class="contact-btn">📧 Email</a>
+                    <a href="https://www.linkedin.com/in/keshav-varshney-587338237/" class="contact-btn" target="_blank">💼 LinkedIn</a>
+                    <a href="tel:+919971188689" class="contact-btn">📞 Call</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-container">
+        <button class="nav-btn" id="prevBtn">← Previous</button>
+        <div class="slide-counter" id="slideCounter">1 of 8</div>
+        <button class="nav-btn" id="nextBtn">Next →</button>
+    </div>
+
+    <script>
+        class Presentation {
+            constructor() {
+                this.currentSlide = 1;
+                this.totalSlides = 8;
+                this.slides = document.querySelectorAll('.slide');
+                this.prevBtn = document.getElementById('prevBtn');
+                this.nextBtn = document.getElementById('nextBtn');
+                this.slideCounter = document.getElementById('slideCounter');
+                this.progressBar = document.getElementById('progressBar');
+                
+                this.init();
+            }
+            
+            init() {
+                this.updateSlide();
+                this.bindEvents();
+            }
+            
+            bindEvents() {
+                // Button navigation
+                this.prevBtn.addEventListener('click', () => this.previousSlide());
+                this.nextBtn.addEventListener('click', () => this.nextSlide());
+                
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowRight' || e.key === ' ') {
+                        e.preventDefault();
+                        this.nextSlide();
+                    } else if (e.key === 'ArrowLeft') {
+                        e.preventDefault();
+                        this.previousSlide();
+                    }
+                });
+                
+                // Click navigation
+                this.slides.forEach(slide => {
+                    slide.addEventListener('click', (e) => {
+                        if (!e.target.closest('a, button')) {
+                            this.nextSlide();
+                        }
+                    });
+                });
+            }
+            
+            updateSlide() {
+                // Hide all slides
+                this.slides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+                
+                // Show current slide
+                const currentSlideElement = document.querySelector(`[data-slide="${this.currentSlide}"]`);
+                if (currentSlideElement) {
+                    currentSlideElement.classList.add('active');
+                }
+                
+                // Update counter
+                this.slideCounter.textContent = `${this.currentSlide} of ${this.totalSlides}`;
+                
+                // Update progress bar
+                const progress = (this.currentSlide / this.totalSlides) * 100;
+                this.progressBar.style.width = `${progress}%`;
+                
+                // Update button states
+                this.prevBtn.disabled = this.currentSlide === 1;
+                this.nextBtn.disabled = this.currentSlide === this.totalSlides;
+                
+                // Update button text for last slide
+                if (this.currentSlide === this.totalSlides) {
+                    this.nextBtn.textContent = '🎉 Finished';
+                } else {
+                    this.nextBtn.textContent = 'Next →';
+                }
+            }
+            
+            nextSlide() {
+                if (this.currentSlide < this.totalSlides) {
+                    this.currentSlide++;
+                    this.updateSlide();
+                }
+            }
+            
+            previousSlide() {
+                if (this.currentSlide > 1) {
+                    this.currentSlide--;
+                    this.updateSlide();
+                }
+            }
+        }
+        
+        // Initialize the presentation when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new Presentation();
+        });
+        
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animate bullet points on slide entry
+            const animateElements = () => {
+                const activeSlide = document.querySelector('.slide.active');
+                const bullets = activeSlide?.querySelectorAll('.bullet-item, .experience-card, .skill-card');
+                
+                if (bullets) {
+                    bullets.forEach((bullet, index) => {
+                        bullet.style.animation = 'none';
+                        bullet.offsetHeight; // Trigger reflow
+                        bullet.style.animation = `slideIn 0.6s ease-out ${index * 0.1}s forwards`;
+                    });
+                }
+            };
+            
+            // Observe slide changes
+            const observer = new MutationObserver(() => {
+                setTimeout(animateElements, 100);
+            });
+            
+            document.querySelectorAll('.slide').forEach(slide => {
+                observer.observe(slide, {
+                    attributes: true,
+                    attributeFilter: ['class']
+                });
+            });
+            
+            // Initial animation
+            animateElements();
+        });
+    </script>
+</body>
+</html>
